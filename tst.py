@@ -91,33 +91,39 @@ import re
 
 
 
-global a, b
-a = 4
-b = 4
-def plus():
-    global a, b
-    return a+b
-def minus():
-    global a, b
-    return a-b
-def mul():
-    return a*b
-def div():
-    return a//b
-out = 0
-dict_o = {'+': plus(), '-': minus(), '*': mul(), '/': div()}
-txt1 = '4+8+95-13'
-nums = re.findall('[0-9]+', txt1)
-operators = re.findall('[^0-9]', txt1)
-a=int(nums[0])
-print('a=',a)
-b=int(nums[1])
-print('b=',b)
-out+=dict_o[operators[0]]
-print('a+b=',out)
-for i in range(1,len(operators)):
-    a=out
-    b=nums[i+1]
-    out+=dict_o[operators[i]]
+# global a, b
+# a = 4
+# b = 4
+# def plus():
+#     global a, b
+#     return a+b
+# def minus():
+#     global a, b
+#     return a-b
+# def mul():
+#     return a*b
+# def div():
+#     return a//b
+# out = 0
+# dict_o = {'+': plus(), '-': minus(), '*': mul(), '/': div()}
+# txt1 = '4+8+95-13'
+# nums = re.findall('[0-9]+', txt1)
+# operators = re.findall('[^0-9]', txt1)
+# a=int(nums[0])
+# print('a=',a)
+# b=int(nums[1])
+# print('b=',b)
+# out+=dict_o[operators[0]]
+# print('a+b=',out)
+# for i in range(1,len(operators)):
+#     a=out
+#     b=nums[i+1]
+#     out+=dict_o[operators[i]]
+#
+# print(out)
 
-print(out)
+
+dict_o = {'+': lambda x, y: x + y, '-': lambda x, y: x - y,
+          '*': lambda x, y: x * y, '/': lambda x, y: x / y}
+
+print(dict_o['+'](2,3))
